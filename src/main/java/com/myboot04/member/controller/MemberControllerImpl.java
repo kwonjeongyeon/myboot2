@@ -55,12 +55,13 @@ public class MemberControllerImpl implements MemberController {
 	@RequestMapping(value = "/member/listMembers.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// String viewName = getViewName(request);
-		//String viewName = (String) request.getAttribute("viewName");
+		String viewName = (String) request.getAttribute("viewName");
 		// System.out.println(viewName);
 		// logger.info("viewName: " + viewName);
-		//logger.debug("viewName: " + viewName);
+		logger.debug("viewName: " + viewName);
 		List<MemberVO> membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView("/member/listMembers");
+		//ModelAndView mav = new ModelAndView("/member/listMembers");
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("membersList", membersList);
 		return mav;
 	}
